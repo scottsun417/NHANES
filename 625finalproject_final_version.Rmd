@@ -53,7 +53,7 @@ AUC-ROC curve is a performance measurement for the classification problems at va
 
 Regarding computational challenges, when it comes to coding efficiency, we avoid using unnecessary loop for iteration, except for built-in functions. Also, local variables are used instead of global variables. The most up-to-date python version was adopted as it runs faster than previous versions. We also tried Biostat cluster to increase coding efficiency.
 
-# Results and discussion (\*)
+# Results and discussion
 
 Our final dataframe has 48040 rows and 252 columns left after data preprocessing. The distribution of the response variable is shown in **Figure1**. The dataset seems imbalanced as the negative responses are way more than positive ones. After balancing our dataset using SMOTE, we proceeded to feature selection using XGBClassifier in order to select the key features and fit them into our models. Top 10 features sorted by importance are listed here (**Figure2**).
 
