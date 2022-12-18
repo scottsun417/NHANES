@@ -51,11 +51,11 @@ AUC-ROC curve is a performance measurement for the classification problems at va
 
 ### Computational techniques 
 
-Regarding computational challenges, when it comes to coding efficiency, we avoid using unnecessary loop for iteration, except for built-in functions. Also, local variables are used instead of global variables. The most up-to-date python version was adopted as it runs faster than previous versions. We also tried Biostat cluster to increase coding efficiency.
+Regarding computational challenges, when it comes to coding efficiency, we avoid using unnecessary loop for iteration, except for built-in functions. Also, local variables are used instead of global variables. The most up-to-date python version was adopted as it runs faster than previous versions. We also tried Biostat cluster to increase efficiency.
 
-# Results and discussion
+# Results and discussion 
 
-Our final dataframe has 48040 rows and 252 columns left after data preprocessing. The distribution of the response variable is shown in **Figure1**. The dataset seems imbalanced as the negative responses are way more than positive ones. After balancing our dataset using SMOTE, we proceeded to feature selection using XGBClassifier in order to select the key features and fit them into our models. Top 10 features sorted by importance are listed here (**Figure2**).
+Our final dataframe has 48040 rows and 252 columns left after data preprocessing. The distribution of the response variable is shown in **Figure 1**. The dataset seems imbalanced as the negative responses are way more than positive ones. After balancing our dataset using SMOTE, we proceeded to feature selection using XGBClassifier in order to select the key features and fit them into our models. Top 10 features among 24 selected sorted by importance are listed (**Figure 2**).
 
 ```{r, echo = FALSE, fig.width= 6, fig.height= 3}
 library(ggplot2)
@@ -86,7 +86,7 @@ feature_select_plot <- ggplot(feature_select, aes(x=reorder(variable, Num), y=sc
   coord_flip() + 
   labs(x = 'Features',
        y = 'Score',
-       title = "Top 24 features by \n XGBClassifier",
+       title = "Top 10 features by \n XGBClassifier",
        caption = "Figure 2") + 
   theme(plot.title = element_text(hjust = 0.5),
         plot.caption = element_text(hjust = 0.5)
@@ -96,7 +96,7 @@ feature_select_plot <- ggplot(feature_select, aes(x=reorder(variable, Num), y=sc
 grid.arrange(target_variables_plot, feature_select_plot, ncol=2)
 ```
 
-Logistic regression is the baseline model for prediction, which is implemented to compare with other machine learning models. We noticed that the accuracy score is about 0.845. In reality, this means we can predict whether a patient has diabetes based on the 24 selected features. We then used other machine learning models such as random forest, gradient boosting, etc, and made comparison between these models using their accuracy scores and operation times (**Figure3**). The result indicated bagging decision tree has the highest accuracy score followed by random forest and bagging K-Nearest Neighbors. Besides, except for SVM has the lowest running efficiency, the running time of Gradient Boosting Decision Tree is faster than expected. Due to the sequential connection between individual trees, boosting algorithms are highly accurate. In gradient boosting decision trees we need to be careful about the number of trees we select, because having too many weak learners in the model may lead to the overfitting of data$^{[6]}$. Therefore, tuning of hyperparameters in gradient boosting decision trees should be considered. Furthermore, Bagging on Decision Tree significantly improves the model performance due to it is a weaker classifier. It is worth noting that Bagging on KNN also shows a significance improvement in our study, which may due to the relatively low K$^{[7][8]}$. However, the MLP model performance in our study is not as expected, which may be due to the setting of the hyperparameter tuning. The top five features selected by the random forest importance tree (**Figure4**), which are age, general health condition, taking insulin and blood tested situation were consistent with the previous top 5 features selected by XGBClassifier.
+Logistic regression is the baseline model for prediction, which is implemented to compare with other machine learning models. We noticed that the accuracy score is about 0.845. In reality, this means we can predict whether a patient has diabetes based on the 24 selected features. We then used other machine learning models such as random forest, gradient boosting, etc, and made comparison between these models using their accuracy scores and operation times (**Figure 3**). The result indicated bagging decision tree has the highest accuracy score followed by random forest and bagging K-Nearest Neighbors. Besides, except for SVM has the lowest running efficiency, the running time of Gradient Boosting Decision Tree is faster than expected. Due to the sequential connection between individual trees, boosting algorithms are highly accurate. In gradient boosting decision trees we need to be careful about the number of trees we select, because having too many weak learners in the model may lead to the overfitting of data$^{[6]}$. Therefore, tuning of hyperparameters in gradient boosting decision trees should be considered. Furthermore, Bagging on Decision Tree significantly improves the model performance, due to the weak classifier. It is worth noting that Bagging on KNN also shows a significant improvement in our study, which may due to the relatively low K$^{[7][8]}$. However, the MLP model performance in our study is not as expected, which may be due to the setting of the hyperparameter tuning. The top five features selected by the random forest importance tree (**Figure 4**), which are age, general health condition, taking insulin and blood tested situation were consistent with the previous top 5 features selected by XGBClassifier.
 
 ```{r, echo=FALSE, fig.width= 6, fig.height= 3}
 library(ggplot2)
@@ -149,7 +149,7 @@ feature_select_rf_plot <- ggplot(feature_select_rf, aes(area = Score, fill = Sco
 grid.arrange(accuracy_plot, feature_select_rf_plot, ncol=2)
 ```
 
-Lastly, five models which have accuracy scores higher than logistic regression model were selected, and their corresponding AUC-ROC curves were depicted as the figure below. We found that random forest has the highest AUC value 0.97, which demonstrates its advantage at distinguishing whether the patient had diabetes. 
+Lastly, five models which have accuracy scores higher than logistic regression model were selected, and their corresponding AUC-ROC curves were depicted as **Figure 5**. We found that random forest has the highest AUC value 0.97, which demonstrates its advantage at distinguishing whether the patient had diabetes. 
 
 \setcounter{figure}{4}
 ```{r, echo = FALSE, fig.cap="ROC-AUC curve", fig.align = 'center', out.width = "50%"}
@@ -158,7 +158,7 @@ knitr::include_graphics("/Users/jianxiongshen/Downloads/newAUCROC.png")
 
 # Conclusion
 
-In conclusion, amount all of the eight models, Bagging Decision Tree gives the highest accuracy (based on confusion matrix) on testing data set, while random forest would be preferred basing on AUC-ROC which gives the highest score 0.969. Age, general health condition, taking insulin and blood tested situation tend to be the commonly important features selected by XGBClassifier and random forest prediction model, which may indicate a relationship with diabetes based on NHANES (2005-2014) data. Besides, except for SVM has the lowest running efficiency, the running time of Gradient Boosting Decision Tree is faster than expected. Furthermore, Bagging Decision Tree illustrates a significant improvement of weaker classifiers implemented on our data (i.e. Bagging Decision Tree), and it worth mention that Bagging KNN also shows a surprisingly improvement of it in our study. 
+In conclusion, among all of the seven models, Bagging Decision Tree gives the highest accuracy (based on confusion matrix) on testing data set, while random forest would be preferred basing on AUC-ROC which gives the highest score 0.969. Age, general health condition, taking insulin and blood tested situation tend to be the commonly important features selected by XGBClassifier and random forest prediction model, which may indicate a relationship with diabetes based on NHANES (2005-2014) data. Besides, except for SVM has the lowest running efficiency, the running time of Gradient Boosting Decision Tree is faster than expected. Furthermore, Bagging Decision Tree illustrates a significant improvement of weaker classifiers implemented on our data (i.e. Bagging Decision Tree), and it worth mention that Bagging KNN also shows a surprisingly improvement of it in our study. 
 
 It is important to note that there are limitations to conclusions we can draw based on the data and the underlying model assumptions. The removal of missing values may lead to a biased representation of the data. Future studies should explore the use of interpolation for the missing values, such as replacing by the average or median, or predicting by classification or regression models$^{[9]}$. Besides, some models (ie. gradient boosting and MLP) are implemented without appropriate tuning parameters which may affect variance-base trade-off or cause overfitting$^{[10]}$. A more in-depth review of parameters tuning of certain cases is therefore necessary. Furthermore, the selected important features are based on model predictions, which may lose practical significance. In future studies, more literature reviews are needed to make inferences, especially basing on most recent NHANES data. Furthermore, future study considers C++ cross-compilation, multiprocessing, Polars (a lightning-fast dataFrame library) for efficiency improvement$^{[11][12][13]}$.
 
@@ -179,3 +179,4 @@ Broadly, this analysis was consistent with the trends in existing literature and
 **Jianxiong Shen**: Feature selection, model building, results and discussion \
 **Shushun Ren**: Data processing, model optimization, introduction and methods\
 **Zhiyi Sun**: Data acquisition, model building, conclusion 
+
