@@ -27,7 +27,7 @@ Here is the full reference list because of sapce we were not able to include the
 
 [13] Pola-Rs. Pola-Rs/Polars: Fast multi-threaded, hybrid-streaming DataFrame library in Rust: Python: Node.js, GitHub. Available at: https://github.com/pola-rs/polars
 
-[14] Mehrtash et al. (1965) How to compare ROC AUC scores of different binary classifiers and assess statistical significance in python? (P-value, confidence interval), Stack Overflow. Available at:
+[14] Mehrtash et al. (2018) How to compare ROC AUC scores of different binary classifiers and assess statistical significance in python? (P-value, confidence interval), Stack Overflow. Available at:
 https://stackoverflow.com/questions/52373318/how-to-compare-roc-auc-scores-of-different-binary-classifiers-and-assess-statist
 
 [15] Centers for Disease Control and Prevention (2017) National Health and Nutrition Examination Survey, Kaggle. Available at: https://www.kaggle.com/datasets/cdc/national-health-and-nutrition-examination-survey
