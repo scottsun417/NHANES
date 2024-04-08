@@ -9,7 +9,7 @@ Here is the full reference list because of sapce we were not able to include the
 
 [4] Likebupt. Smote - Azure Machine Learning, Azure Machine Learning | Microsoft Learn. Available at:https://learn.microsoft.com/en-us/azure/machine-learning/component-reference/smote . 
 
-[5] Narkhede, S. (2021) Understanding AUC - roc curve, Medium. Towards Data Science. Available at: https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5#:~:text=the%20multiclass%20model%3F-,What%20is%20the%20AUC%20%2D%20ROC%20Curve%3F,capable%20of%20distinguishing%20between%20classes. 
+[5] Narkhede, S. (2021) Understanding AUC - roc curve, Medium. Towards Data Science. Available at: https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5#. 
 
 [6] Lombardo, L., Cama, M., Conoscenti, C., Märker, M., & Rotigliano, E. J. N. H. (2015).  Binary logistic regression versus stochastic gradient boosted decision trees in assessing landslide susceptibility for multiple-occurring landslide events: application to the 2009 storm event in Messina (Sicily, southern Italy).  Natural Hazards, 79(3), 1621-1648.
 
